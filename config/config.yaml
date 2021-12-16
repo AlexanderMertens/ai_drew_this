@@ -1,0 +1,9 @@
+dimensions:
+  # dimension of latent space
+  latent: 100
+  # (width, height, nr_channels) of images
+  img_shape: !!python/tuple [28, 28, 1]
+
+models:
+  # path to weights of models
+  butterfly: "tf_models/DCGAN-Butterfly"
