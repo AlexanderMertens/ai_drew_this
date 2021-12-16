@@ -1,9 +1,13 @@
 import numpy as np
+import io
 
 from tensorflow.python.keras.models import load_model
 from tensorflow.python.keras.models import Model
+from PIL import Image as im
+from PIL import ImageChops as imc
 
 from config import config
+from project.utility.image_processing import image_float_to_int
 
 
 class ImageService:
@@ -63,10 +67,10 @@ class ImageService:
             new_images = self.filter_images(self.generate_images(100), quality=quality)
             quality_images = np.concatenate((quality_images, new_images))
 
-        return quality_images[:num_samples]
+        return image_float_to_int(quality_images[:num_samples])
 
     def generate_quality_image(self, quality: float = 0.5) -> np.ndarray:
-        """Generate single image of appropriate quality
+        """Generate single image of appropriate quality.
 
         Args:
             quality (float, optional): Float between 0.0 and 1.0 representing quality of the image. Defaults to 0.5.
@@ -75,6 +79,15 @@ class ImageService:
             np.ndarray: Array containing data of single image.
         """
         return self.generate_quality_images(1, quality=quality)[0]
+
+    def generate_quality_image_byte(self, quality: float = 0.5) -> io.BytesIO:
+        image_array = self.generate_quality_image(quality=quality)
+        image = im.fromarray(image_array)
+        image = imc.invert(image)
+        im_bytes = io.BytesIO()
+        image.save(im_bytes, format="PNG")
+        im_bytes.seek(0)
+        return im_bytes
 
 
 def load_generator(model_name: str) -> Model:

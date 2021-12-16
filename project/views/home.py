@@ -1,4 +1,6 @@
 from flask import Blueprint
+from flask import Response
+from flask import send_file
 from flask.templating import render_template
 import numpy as np
 
@@ -17,7 +19,7 @@ def home() -> str:
     return render_template("index.html")
 
 
-@home_bp.route("/test", methods=["GET"])
-def image() -> str:
-    data = image_service.generate_quality_image(quality=0.5)
-    return np.array2string(data)
+@home_bp.route("/images/fake.png", methods=["GET"])
+def image() -> Response:
+    data = image_service.generate_quality_image_byte(quality=0.6)
+    return send_file(data, mimetype="image/PNG")
