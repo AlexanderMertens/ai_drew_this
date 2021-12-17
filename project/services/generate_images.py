@@ -61,10 +61,11 @@ class ImageService:
         Returns:
             np.array: Array containing images.
         """
-        quality_images = self.filter_images(self.generate_images(10), quality=quality)
+        quality_images = self.filter_images(self.generate_images(50), quality=quality)
 
         while quality_images.shape[0] < num_samples:
-            new_images = self.filter_images(self.generate_images(100), quality=quality)
+            print("Trying to create images")
+            new_images = self.filter_images(self.generate_images(50), quality=quality)
             quality_images = np.concatenate((quality_images, new_images))
 
         return image_float_to_int(quality_images[:num_samples])
