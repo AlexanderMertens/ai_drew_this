@@ -4,12 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}" type="text/css" />
   <title>Ai Drew This</title>
 </head>
 
-<body>
 
-  <h1>Test</h1>
+<body>
+  <div class="full-height">
+
+    <header>
+      <nav>
+        <h1>Test</h1>
+      </nav>
+    </header>
+
+    <main>
+      <img src="{{ url_for('home.image_fake')}}" class="game-image" />
+    </main>
+
+  </div>
 </body>
 
 </html>

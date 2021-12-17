@@ -20,6 +20,6 @@ def home() -> str:
 
 
 @home_bp.route("/images/fake.png", methods=["GET"])
-def image() -> Response:
+def image_fake() -> Response:
     data = image_service.generate_quality_image_byte(quality=0.6)
     return send_file(data, mimetype="image/PNG")
