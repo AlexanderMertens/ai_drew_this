@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}" type="text/css" />
-  <script type="text/javascript" src="{{ url_for('static', filename = 'js/game.js')}}"></script>
   <title>AI Drew This</title>
 </head>
 
@@ -20,10 +19,22 @@
     </header>
 
     <main class="page-main">
-      <img src="{{ url_for('game.image_fake')}}" class="game-image" />
+      <div class="view">
+        <img src="{{ url_for('game.image_fake')}}" class="game-image" id="image-view" />
+      </div>
+      <div class="controls">
+        <p class="score">
+          <span id="score"></span>/<span id="total"></span>
+        </p>
+        <button id="answer-ai">AI</button>
+        <button id="answer-person">Person</button>
+        <button id="next-round">Next</button>
+        <button id="new-game">New Game</button>
+      </div>
     </main>
 
   </div>
+  <script type="text/javascript" src="{{ url_for('static', filename = 'js/game.js')}}"></script>
 </body>
 
 </html>
