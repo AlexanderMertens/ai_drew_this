@@ -7,3 +7,11 @@ dimensions:
 models:
   # path to weights of models
   butterfly: "tf_models/DCGAN-Butterfly"
+
+images:
+  # location of directories to images
+  real_project_path: "project/static/images/real"
+  real_url_path: "/static/images/real"
+
+game:
+  rounds: 10
