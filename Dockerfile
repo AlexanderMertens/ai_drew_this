@@ -26,4 +26,4 @@ WORKDIR /ai-drew-this
 EXPOSE 8080
 
 # Run script
-ENTRYPOINT ['bin/run.sh']
+ENTRYPOINT ["bin/run.sh"]
