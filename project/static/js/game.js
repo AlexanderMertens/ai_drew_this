@@ -39,10 +39,10 @@ function setupGame() {
      */
     const answerAI = document.getElementById("answer-ai");
     const answerPerson = document.getElementById("answer-person");
-    const nextRound = document.getElementById("next-round");
-    const newGame = document.getElementById("new-game");
+    const nextButton = document.getElementById("next");
 
     function answerAiHandler() {
+        console.log("Press answer AI")
         // if total > index, round has already been answered
         // so button must do nothing
         if (gameState.index === gameState.total) {
@@ -51,12 +51,13 @@ function setupGame() {
             if (!gameState.data[gameState.index].isReal) {
                 gameState.score += 1;
             }
-            updateScore()
+            updateScore();
         }
     }
     answerAI.onclick = answerAiHandler;
 
     function answerPersonHandler() {
+        console.log("Press answer Person")
         // if total > index, round has already been answered
         // so button must do nothing
         if (gameState.index === gameState.total) {
@@ -65,20 +66,24 @@ function setupGame() {
             if (gameState.data[gameState.index].isReal) {
                 gameState.score += 1;
             }
-            updateScore()
+            updateScore();
         }
     }
     answerPerson.onclick = answerPersonHandler;
 
-    function nextRoundHandler() {
-        if (gameState.index + 1 === gameState.total) {
-            gameState.index += 1;
-            updateView()
+    function nextButtonHandler() {
+        console.log("Press next")
+        if (gameState.total === gameState.data.length) {
+            startGame();
+            return;
         }
 
+        if (gameState.index + 1 === gameState.total) {
+            gameState.index += 1;
+            updateView();
+        }
     }
-    nextRound.onclick = nextRoundHandler;
-    newGame.onclick = startGame;
+    nextButton.onclick = nextButtonHandler;
 }
 
 function updateScore() {
@@ -89,8 +94,8 @@ function updateScore() {
 }
 
 function updateView() {
-    const imageView = document.getElementById("image-view")
-    imageView.src = gameState.data[gameState.index].src
+    const imageView = document.getElementById("image-view");
+    imageView.src = gameState.data[gameState.index].src;
 }
 
 setupGame()

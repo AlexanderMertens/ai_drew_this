@@ -31,11 +31,16 @@ header, main {
   padding: 1rem;
 }
 
-main {
+.page-main {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto 0;
+}
+
+.view, .controls, .score-box {
+  width: 128px;
+  margin-right: 1rem;
 }
 
 .game-image {

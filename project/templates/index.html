@@ -14,7 +14,6 @@
 
     <header class="page-header">
       <nav>
-        <h1>AI drew this</h1>
       </nav>
     </header>
 
@@ -23,13 +22,14 @@
         <img src="{{ url_for('game.image_fake')}}" class="game-image" id="image-view" />
       </div>
       <div class="controls">
+        <button id="answer-ai">AI</button>
+        <button id="answer-person">Person</button>
+      </div>
+      <div class="score-box">
         <p class="score">
           <span id="score"></span>/<span id="total"></span>
         </p>
-        <button id="answer-ai">AI</button>
-        <button id="answer-person">Person</button>
-        <button id="next-round">Next</button>
-        <button id="new-game">New Game</button>
+        <button id="next">Next</button>
       </div>
     </main>
 
