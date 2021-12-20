@@ -12,7 +12,7 @@ RUN apt-get -y install python3-pip
 # install python packages
 RUN pip3 install pip --upgrade
 COPY requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
 # outputs in real time 
 ENV PYTHONUNBUFFERED=1
