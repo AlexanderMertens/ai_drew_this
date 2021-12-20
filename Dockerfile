@@ -23,5 +23,7 @@ COPY . /ai-drew-this
 # Change the workdir
 WORKDIR /ai-drew-this
 
+EXPOSE 8080
+
 # Run script
 ENTRYPOINT ['bin/run.sh']
