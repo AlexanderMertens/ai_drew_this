@@ -24,4 +24,4 @@ COPY . /ai-drew-this
 WORKDIR /ai-drew-this
 
 # Run script
-ENTRYPOINT ["python3", "run.py"]
+ENTRYPOINT ['bin/run.sh']
