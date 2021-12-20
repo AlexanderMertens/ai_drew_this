@@ -11,7 +11,7 @@ game_bp = Blueprint("game", __name__)
 
 @game_bp.route("/images/fake.png", methods=["GET"])
 def image_fake() -> Response:
-    data = image_service.generate_quality_image_byte(quality=0.6)
+    data = image_service.generate_quality_image_byte(quality=0.45)
     return send_file(data, mimetype="image/PNG")
 
 
