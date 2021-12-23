@@ -243,3 +243,23 @@ main {
   right: 0;
   background-image: url("/static/images/background2.png");
 }
+
+.message {
+  position: relative;
+  margin-top: 10px;
+  text-align: center;
+  background-color: white;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+.message.correct {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.message.incorrect {
+  color: var(--red);
+  border-color: var(--red);
+}

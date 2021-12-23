@@ -41,10 +41,12 @@ function setupGame() {
      * Add all onclick listeners for buttons in the game.
      */
     const answerAI = document.getElementById("answer-ai");
+    const aiContainer = document.getElementById("ai-container");
     const answerPerson = document.getElementById("answer-person");
+    const personContainer = document.getElementById("person-container");
     const nextButton = document.getElementById("next");
 
-    function answerButtonHandler(answerButton, otherAnswer, correctAnswer) {
+    function answerButtonHandler(answerButton, otherAnswer, correctAnswer, container) {
         if (correctAnswer) {
             console.log("Press answer Person")
         } else {
@@ -58,20 +60,23 @@ function setupGame() {
             if (gameState.data[gameState.index].isReal === correctAnswer) {
                 gameState.score += 1;
                 updateButtonsCorrect(answerButton, otherAnswer);
+                addMessage(container, true);
             } else {
                 updateButtonsIncorrect(answerButton, otherAnswer);
+                addMessage(container, false);
             }
             updateScore();
             setNextButtonActive();
             checkForEndOfGame();
         }
     }
-    answerAI.onclick = () => answerButtonHandler(answerAI, answerPerson, false);
-    answerPerson.onclick = () => answerButtonHandler(answerPerson, answerAI, true);
+    answerAI.onclick = () => answerButtonHandler(answerAI, answerPerson, false, aiContainer);
+    answerPerson.onclick = () => answerButtonHandler(answerPerson, answerAI, true, personContainer);
 
     function nextButtonHandler() {
         console.log("Press next")
         if (gameState.total === gameState.data.length) {
+            removeMessage();
             clearView();
             startGame();
             resetButtons(answerAI, answerPerson);;
@@ -83,6 +88,7 @@ function setupGame() {
             gameState.index += 1;
             resetButtons(answerAI, answerPerson);
             setNextButtonInactive();
+            removeMessage();
             updateView();
             loadNextView();
         }
@@ -169,6 +175,19 @@ function setNextButtonInactive() {
      */
     const next = document.getElementById("next");
     next.className += " inactive";
+}
+
+function addMessage(container, correct) {
+    const message = document.createElement("div");
+    message.innerHTML = correct ? "Correct!" : "Wrong!";
+    message.className = `message ${correct ? "correct" : "incorrect"}`;
+    message.id = "message";
+    container.appendChild(message);
+}
+
+function removeMessage() {
+    const message = document.getElementById("message");
+    message?.remove();
 }
 
 function updateButtonsCorrect(correctButton, otherButton) {

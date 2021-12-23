@@ -40,13 +40,13 @@
         <span id="score"></span>/<span id="total"></span>
       </div>
       <div class="controls">
-        <div class="button-container">
+        <div class="button-container" id="ai-container">
           <button id="answer-ai" class="answer-button">AI</button>
         </div>
         <div class="view" id="view">
           <img src="{{ url_for('static', filename = 'images/loading.gif') }}" class="loading-gif" />
         </div>
-        <div class="button-container">
+        <div class="button-container" id="person-container">
           <button id="answer-person" class="answer-button">Person</button>
         </div>
       </div>
