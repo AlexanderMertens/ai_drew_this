@@ -1,3 +1,11 @@
+DEBUG = false; // set to false to disable debugging
+old_console_log = console.log;
+console.log = function() {
+    if ( DEBUG ) {
+        old_console_log.apply(this, arguments);
+    }
+}
+
 let gameState = {
     index: 0,
     score: 0,
