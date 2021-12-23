@@ -113,6 +113,12 @@ main {
   height: 128px;
 }
 
+.game-image.hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
 .button-container {
   padding: 30px 1rem;
 }

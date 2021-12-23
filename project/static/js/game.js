@@ -22,6 +22,7 @@ function runGame(responseJSON) {
     console.log("Game state:",gameState);
     updateScore();
     updateView();
+    loadNextView();
 }
 
 function reset(state) {
@@ -79,6 +80,7 @@ function setupGame() {
             resetButtons(answerAI, answerPerson);
             setNextButtonInactive();
             updateView();
+            loadNextView();
         }
     }
     nextButton.onclick = nextButtonHandler;
@@ -94,20 +96,47 @@ function updateScore() {
     total.innerHTML = gameState.total;
 }
 
+function loadNextView() {
+    /**
+     * Preload next image to view.
+     */
+    if (gameState.index + 1 < gameState.data.length) {
+        const view = document.getElementById("view");
+        const newImage = document.createElement("img");
+        newImage.src = gameState.data[gameState.index + 1].src;
+        newImage.className = "game-image hidden";
+        newImage.id = "next-image-view";
+        view.appendChild(newImage);
+    }
+}
+
 function updateView() {
     /**
      * Update source of image.
      */
     const imageView = document.getElementById("image-view");
-    imageView.src = gameState.data[gameState.index].src;
+    const nextImage = document.getElementById("next-image-view");
+    if (nextImage) {
+        imageView.remove();
+        nextImage.id = "image-view";
+        nextImage.className = "game-image";
+    } else {
+        imageView.src = gameState.data[gameState.index].src;
+    }
 }
 
 function setNextButtonActive() {
+    /**
+     * Remove inactive from class of next button.
+     */
     const next = document.getElementById("next");
     next.className = "next-button";
 }
 
 function setNextButtonInactive() {
+    /**
+     * Add inactive class to next button.
+     */
     const next = document.getElementById("next");
     next.className += " inactive";
 }
