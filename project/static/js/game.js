@@ -22,7 +22,7 @@ function runGame(responseJSON) {
     console.log("Game state:",gameState);
     resetNextButton();
     updateScore();
-    updateView();
+    createNewImage();
     loadNextView();
 }
 
@@ -72,6 +72,7 @@ function setupGame() {
     function nextButtonHandler() {
         console.log("Press next")
         if (gameState.total === gameState.data.length) {
+            clearView();
             startGame();
             resetButtons(answerAI, answerPerson);;
             setNextButtonInactive();
@@ -87,6 +88,20 @@ function setupGame() {
         }
     }
     nextButton.onclick = nextButtonHandler;
+}
+
+function clearView() {
+    const view = document.getElementById("view");
+    view.innerHTML = ""
+}
+
+function createNewImage() {
+    const view = document.getElementById("view");
+    const newImage = document.createElement("img");
+    newImage.src = gameState.data[gameState.index].src;
+    newImage.className = "game-image";
+    newImage.id = "image-view";
+    view.appendChild(newImage);
 }
 
 function updateScore() {
