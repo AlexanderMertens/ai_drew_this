@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}" type="text/css" />
   <title>AI Drew This</title>
 </head>
@@ -13,24 +17,35 @@
   <div class="box">
 
     <header class="page-header">
-      <nav>
+      <nav class="page-nav">
+        <h1>AI Drew This</h1>
+        <ul>
+          <li>
+            <a href="/">Play</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ul>
       </nav>
     </header>
 
     <main class="page-main">
-      <div class="view">
-        <img src="{{ url_for('game.image_fake')}}" class="game-image" id="image-view" />
+      <div class="score">
+        <span id="score"></span>/<span id="total"></span>
       </div>
       <div class="controls">
-        <button id="answer-ai">AI</button>
-        <button id="answer-person">Person</button>
+        <div class="button-container">
+          <button id="answer-ai" class="answer-button">AI</button>
+        </div>
+        <div class="view">
+          <img src="{{ url_for('game.image_fake')}}" class="game-image" id="image-view" />
+        </div>
+        <div class="button-container">
+          <button id="answer-person" class="answer-button">Person</button>
+        </div>
       </div>
-      <div class="score-box">
-        <p class="score">
-          <span id="score"></span>/<span id="total"></span>
-        </p>
-        <button id="next">Next</button>
-      </div>
+      <button id="next" class="next-button inactive">Next</button>
     </main>
 
   </div>

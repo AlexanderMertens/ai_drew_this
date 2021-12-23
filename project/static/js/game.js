@@ -41,45 +41,43 @@ function setupGame() {
     const answerPerson = document.getElementById("answer-person");
     const nextButton = document.getElementById("next");
 
-    function answerAiHandler() {
-        console.log("Press answer AI")
+    function answerButtonHandler(answerButton, otherAnswer, correctAnswer) {
+        if (correctAnswer) {
+            console.log("Press answer Person")
+        } else {
+            console.log("Press answer AI")
+        }
         // if total > index, round has already been answered
         // so button must do nothing
         if (gameState.index === gameState.total) {
             gameState.total += 1;
             // Add +1 to score if answer is correct
-            if (!gameState.data[gameState.index].isReal) {
+            if (gameState.data[gameState.index].isReal === correctAnswer) {
                 gameState.score += 1;
+                updateButtonsCorrect(answerButton, otherAnswer);
+            } else {
+                updateButtonsIncorrect(answerButton, otherAnswer);
             }
             updateScore();
+            setNextButtonActive();
         }
     }
-    answerAI.onclick = answerAiHandler;
-
-    function answerPersonHandler() {
-        console.log("Press answer Person")
-        // if total > index, round has already been answered
-        // so button must do nothing
-        if (gameState.index === gameState.total) {
-            gameState.total += 1;
-            // Add +1 to score if answer is correct
-            if (gameState.data[gameState.index].isReal) {
-                gameState.score += 1;
-            }
-            updateScore();
-        }
-    }
-    answerPerson.onclick = answerPersonHandler;
+    answerAI.onclick = () => answerButtonHandler(answerAI, answerPerson, false);
+    answerPerson.onclick = () => answerButtonHandler(answerPerson, answerAI, true);
 
     function nextButtonHandler() {
         console.log("Press next")
         if (gameState.total === gameState.data.length) {
             startGame();
+            resetButtons(answerAI, answerPerson);;
+            setNextButtonInactive();
             return;
         }
 
         if (gameState.index + 1 === gameState.total) {
             gameState.index += 1;
+            resetButtons(answerAI, answerPerson);
+            setNextButtonInactive();
             updateView();
         }
     }
@@ -87,6 +85,9 @@ function setupGame() {
 }
 
 function updateScore() {
+    /**
+     * Update HTML to reflect gameState score.
+     */
     const score = document.getElementById("score");
     score.innerHTML = gameState.score;
     const total = document.getElementById("total");
@@ -94,8 +95,36 @@ function updateScore() {
 }
 
 function updateView() {
+    /**
+     * Update source of image.
+     */
     const imageView = document.getElementById("image-view");
     imageView.src = gameState.data[gameState.index].src;
+}
+
+function setNextButtonActive() {
+    const next = document.getElementById("next");
+    next.className = "next-button";
+}
+
+function setNextButtonInactive() {
+    const next = document.getElementById("next");
+    next.className += " inactive";
+}
+
+function updateButtonsCorrect(correctButton, otherButton) {
+    correctButton.className += " correct";
+    otherButton.className += " not-selected";
+}
+
+function updateButtonsIncorrect(incorrectButton, otherButton) {
+    incorrectButton.className += " incorrect";
+    otherButton.className += " not-selected";
+}
+
+function resetButtons(answerAI, answerPerson) {
+    answerAI.className = "answer-button";
+    answerPerson.className = "answer-button"
 }
 
 setupGame()

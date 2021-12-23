@@ -4,6 +4,14 @@
   -webkit-box-sizing: border-box;
 }
 
+html {
+  --green: #37E21D;
+  --blue: #1D37E2;
+  --red: #E21D37;
+  --light-blue: #2764aa;
+  font-family: 'Lato', sans-serif;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -27,23 +35,138 @@ body, html {
   flex: 1 1 auto;
 }
 
-header, main {
+main {
   padding: 1rem;
+}
+
+.page-header {
+  padding: 1rem 1rem 1.5rem;
+  background-color: var(--light-blue);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.page-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.page-nav h1 {
+  font-size: 3rem;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.page-nav a {
+  font-size: 2rem;
+}
+
+.page-nav h1,
+.page-nav a {
+  display: inline;
+  line-height: 3rem;
+  margin: 0 0.5rem;
+}
+
+.page-nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.page-nav li {
+  border: none;
 }
 
 .page-main {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: auto 0;
 }
 
-.view, .controls, .score-box {
-  width: 128px;
-  margin-right: 1rem;
+.controls {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+}
+
+.view, .score-box {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 1rem;
+}
+
+.score {
+  margin-bottom: 1rem;
+}
+
+.view {
+  border: 1px solid black;
 }
 
 .game-image {
   width: 128px;
   height: 128px;
 }
+
+.button-container {
+  padding: 30px 1rem;
+}
+
+.score, .answer-button, .next-button {
+  font-size: 1.2rem;
+  width: 6rem;
+  padding: 0.4rem;
+  border-width: 0.3rem;
+  border-style: solid;
+  border-radius: 0.5rem;
+}
+
+.score {
+  background-color: lightgray;
+  border-color: lightgray;
+  text-align: center;
+}
+
+.answer-button, .next-button {
+  background-color: var(--blue);
+  color: white;
+  border-color: var(--blue);
+  box-shadow: 0 0.1rem 0.5rem black;
+}
+
+.answer-button:hover, 
+.answer-button.correct,
+.answer-button.incorrect,
+.answer-button.not-selected,
+.next-button:hover,
+.next-button.inactive {
+  background-color: transparent;
+  color: black;
+}
+
+.answer-button:hover,
+.next-button:hover {
+  cursor: pointer;
+}
+
+.answer-button.correct {
+  border-color: var(--green);
+  cursor: not-allowed;
+}
+
+.answer-button.incorrect {
+  border-color: var(--red);
+  cursor: not-allowed
+}
+
+.answer-button.not-selected,
+.next-button.inactive {
+  border-color: lightgray;
+  cursor: not-allowed
+}
+
