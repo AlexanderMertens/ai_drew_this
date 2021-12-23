@@ -86,6 +86,14 @@ main {
   margin: auto 0;
 }
 
+.explanation {
+  font-size: 1.2rem;
+  background-color: var(--light-blue);
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
 .controls {
   width: 70vw;
   display: flex;
@@ -211,16 +219,24 @@ main {
 @media screen and (max-width: 992px) {
   .left-background,
   .right-background {
-    width: 200px;
-    background-size: 200px;
+    width: 160px;
+    background-size: 160px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .left-background,
   .right-background {
-    width: 100px;
-    background-size: 100px;
+    width: 80px;
+    background-size: 80px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .left-background,
+  .right-background {
+    width: 50px;
+    background-size: 50px;
   }
 }
 
