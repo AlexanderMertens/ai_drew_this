@@ -92,6 +92,7 @@ main {
   text-align: center;
   border-radius: 10px;
   padding: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .controls {
@@ -258,6 +259,10 @@ main {
   background-image: url("/static/images/background2.png");
 }
 
+.score-container {
+  position: relative;
+}
+
 .message {
   position: relative;
   margin-top: 10px;
@@ -276,4 +281,20 @@ main {
 .message.incorrect {
   color: var(--red);
   border-color: var(--red);
+}
+
+.victory-message {
+  font-size: 1rem;
+  position: absolute;
+  top: 0.7rem;
+  left: 6.8rem;
+  width: 5rem;
+}
+
+.victory-message.red {
+  color: var(--red);
+}
+
+.victory-message.green {
+  color: var(--green);
 }

@@ -160,12 +160,14 @@ function updateView() {
 function checkForEndOfGame() {
     const next = document.getElementById("next");
     if (gameState.index === gameState.data.length - 1) {
+        addVictoryMessage();
         next.innerHTML = "New Game";
     } 
 }
 
 function resetNextButton() {
     const next = document.getElementById("next");
+    removeVictoryMessage();
     next.innerHTML = "Next";
 }
 
@@ -195,6 +197,31 @@ function addMessage(container, correct) {
 
 function removeMessage() {
     const message = document.getElementById("message");
+    message?.remove();
+}
+
+function addVictoryMessage() {
+    const container = document.getElementById("score-container");
+    const message = document.createElement("div");
+    const score = gameState.score / gameState.total;
+    message.id = "victory-message";
+    message.className = `victory-message ${score >= 0.5 ? "green" : "red"}`;
+    if (score <= 0.45) {
+        message.innerHTML = "Ouch!";
+    } else if (score <= 0.55) {
+        message.innerHTML = "Not great!";
+    } else if (score <= 0.75) {
+        message.innerHTML = "Not bad!";
+    } else if (score <= 0.95) {
+        message.innerHTML = "Good job!";
+    } else {
+        message.innerHTML = "Congrats!";
+    }
+    container.appendChild(message);
+}
+
+function removeVictoryMessage() {
+    const message = document.getElementById("victory-message");
     message?.remove();
 }
 
