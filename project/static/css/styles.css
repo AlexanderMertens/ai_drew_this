@@ -40,21 +40,31 @@ main {
 }
 
 .page-header {
-  padding: 1rem 1rem 2rem;
+  padding: 1rem 1rem 1.5rem;
   background-color: var(--light-blue);
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
 
+.github-logo {
+  width: 3rem;
+}
+
 .page-nav {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
 .page-nav h1 {
+  color: black;
   font-size: 3rem;
   font-family: 'Permanent Marker', cursive;
+}
+
+.page-nav a {
+  text-decoration: none;
 }
 
 .page-nav a {
@@ -66,18 +76,6 @@ main {
   display: inline;
   line-height: 3rem;
   margin: 0 0.5rem;
-}
-
-.page-nav ul {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.page-nav li {
-  border: none;
 }
 
 .page-main {
