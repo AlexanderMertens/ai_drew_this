@@ -6,9 +6,9 @@
 
 html {
   --green: #37E21D;
-  --blue: #1D37E2;
+  --blue: rgb(58, 91, 199);
   --red: #E21D37;
-  --light-blue: #2764aa;
+  --light-blue: rgb(119, 167, 207);
   font-family: 'Lato', sans-serif;
 }
 
