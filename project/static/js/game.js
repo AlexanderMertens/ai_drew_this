@@ -20,6 +20,7 @@ function runGame(responseJSON) {
     reset(gameState);
     gameState.data = responseJSON;
     console.log("Game state:",gameState);
+    resetNextButton();
     updateScore();
     updateView();
     loadNextView();
@@ -32,6 +33,7 @@ function reset(state) {
     state.index = 0;
     state.score = 0;
     state.total = 0;
+    state.data = [];
 }
 
 function setupGame() {
@@ -61,6 +63,7 @@ function setupGame() {
             }
             updateScore();
             setNextButtonActive();
+            checkForEndOfGame();
         }
     }
     answerAI.onclick = () => answerButtonHandler(answerAI, answerPerson, false);
@@ -123,6 +126,18 @@ function updateView() {
     } else {
         imageView.src = gameState.data[gameState.index].src;
     }
+}
+
+function checkForEndOfGame() {
+    const next = document.getElementById("next");
+    if (gameState.index === gameState.data.length - 1) {
+        next.innerHTML = "New Game";
+    } 
+}
+
+function resetNextButton() {
+    const next = document.getElementById("next");
+    next.innerHTML = "Next";
 }
 
 function setNextButtonActive() {

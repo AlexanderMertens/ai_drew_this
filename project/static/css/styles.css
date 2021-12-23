@@ -125,11 +125,18 @@ main {
 
 .score, .answer-button, .next-button {
   font-size: 1.2rem;
-  width: 6rem;
   padding: 0.4rem;
   border-width: 0.3rem;
   border-style: solid;
   border-radius: 0.5rem;
+}
+
+.score, .answer-button {
+  width: 6rem;
+}
+
+.next-button {
+  width: 10rem;
 }
 
 .score {
