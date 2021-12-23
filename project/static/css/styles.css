@@ -162,7 +162,7 @@ main {
 .answer-button.not-selected,
 .next-button:hover,
 .next-button.inactive {
-  background-color: transparent;
+  background-color: white;
   color: black;
 }
 
