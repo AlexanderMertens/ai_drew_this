@@ -40,7 +40,7 @@ main {
 }
 
 .page-header {
-  padding: 1rem 1rem 1.5rem;
+  padding: 1rem 1rem 2rem;
   background-color: var(--light-blue);
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -196,3 +196,50 @@ main {
   z-index: 1;
 }
 
+.left-background,
+.right-background {
+  width: 400px;
+  background-size: 400px;
+}
+
+@media screen and (max-width: 1600px) {
+  .left-background,
+  .right-background {
+    width: 300px;
+    background-size: 300px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .left-background,
+  .right-background {
+    width: 200px;
+    background-size: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left-background,
+  .right-background {
+    width: 100px;
+    background-size: 100px;
+  }
+}
+
+.left-background, 
+.right-background {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  z-index: -1;
+}
+
+.left-background {
+  left: 0;
+  background-image: url("/static/images/background1.png");
+}
+
+.right-background {
+  right: 0;
+  background-image: url("/static/images/background2.png");
+}
