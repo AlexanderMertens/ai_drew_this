@@ -91,8 +91,8 @@ function setupGame() {
 }
 
 function clearView() {
-    const view = document.getElementById("view");
-    view.innerHTML = ""
+    const imageView = document.getElementById("image-view");
+    imageView.remove();
 }
 
 function createNewImage() {

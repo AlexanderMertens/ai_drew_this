@@ -109,8 +109,12 @@ main {
 }
 
 .game-image {
+  position: relative;
+  left: 0;
+  top: -24px;
   width: 128px;
   height: 128px;
+  z-index: 100;
 }
 
 .game-image.hidden {
@@ -181,5 +185,14 @@ main {
 .next-button.inactive {
   border-color: lightgray;
   cursor: not-allowed
+}
+
+.loading-gif {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  left: 54px;
+  top: 54px;
+  z-index: 1;
 }
 
