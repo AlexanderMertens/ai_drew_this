@@ -23,7 +23,8 @@ COPY . /ai-drew-this
 # Change the workdir
 WORKDIR /ai-drew-this
 
-EXPOSE 8080
+PORT=8080
+EXPOSE $PORT
 
 # Run script
 ENTRYPOINT ["bin/run.sh"]
